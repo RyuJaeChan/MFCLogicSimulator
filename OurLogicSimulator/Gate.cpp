@@ -12,7 +12,7 @@ Gate::~Gate()
 {
 }
 
-void Gate::PrintGate(CPoint point, CClientDC* dc){
+void Gate::PrintGate(CPoint point, CDC* dc){
 	CBitmap bitmap;
 	bitmap.LoadBitmapW(IDB_ANDGATE);
 	CDC dcmem;
