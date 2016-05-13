@@ -86,7 +86,7 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 	{
 		if (hChild == hItem) break;
 		hChild = m_treeCtrl.GetNextItem(hChild, TVGN_NEXT);
-		++index;
+	//	++index;
 	}
 	if (index == 1){
 		isCreate = true;
