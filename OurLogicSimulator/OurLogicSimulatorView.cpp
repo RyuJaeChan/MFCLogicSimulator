@@ -24,10 +24,13 @@ IMPLEMENT_DYNCREATE(COurLogicSimulatorView, CView)
 
 BEGIN_MESSAGE_MAP(COurLogicSimulatorView, CView)
 	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 // COurLogicSimulatorView 생성/소멸
-
+bool isDrawline =false;
+CPoint from;
 COurLogicSimulatorView::COurLogicSimulatorView()
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
@@ -88,12 +91,52 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	CClientDC dc(this);
 	Gate gt;
-
-	//gt.PrintGate(point, &dc);
-	
+	CPoint temp; ;
+	if (SearchDot(point, temp)){
+		CPen myPen(PS_SOLID, 2, RGB(100, 200, 200));
+		dc.SelectStockObject(NULL_BRUSH);
+		dc.SelectObject(&myPen);
+		dc.Ellipse(temp.x - 8, temp.y - 8, temp.x + 8, temp.y + 8);
+		isDrawline = true;
+		from = CPoint(temp.x+4,temp.y);
+	}
+	else{
+		gt.PrintGate(point, &dc);
+	}
 
 	////	// TEST
 
 
 	CView::OnLButtonDown(nFlags, point);
+}
+
+
+void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CClientDC dc(this);
+	if (SearchDot(point, CPoint())!=NULL){
+		::SetCursor(AfxGetApp()->LoadStandardCursor(IDC_CROSS));
+	}
+	if (isDrawline){
+	}
+	CView::OnMouseMove(nFlags, point);
+}
+
+
+void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	CClientDC dc(this);
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (isDrawline){
+		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
+		dc.SelectObject(&myPen);
+		dc.MoveTo(from);
+		dc.LineTo(point.x, from.y);
+		dc.MoveTo(point.x, from.y);
+		dc.LineTo(point);
+		isDrawline = false;
+	}
+	
+	CView::OnLButtonUp(nFlags, point);
 }
