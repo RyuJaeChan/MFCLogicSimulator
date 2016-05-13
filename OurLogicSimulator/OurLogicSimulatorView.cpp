@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 // COurLogicSimulatorView 생성/소멸
 bool isDrawline =false;
-bool isCreate = false;
+
 CPoint from;
 COurLogicSimulatorView::COurLogicSimulatorView()
 {
@@ -119,19 +119,8 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 	}
 
-	////	// TEST
-
-
 	CView::OnLButtonDown(nFlags, point);
 }
-
-
-//void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
-//{
-//	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-//	CView::OnMouseMove(nFlags, point);
-//	
-//}
 
 
 void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)

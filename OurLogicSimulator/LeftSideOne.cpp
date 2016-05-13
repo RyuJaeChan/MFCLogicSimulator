@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "OurLogicSimulator.h"
 #include "LeftSideOne.h"
+#include "Gate.h"
+
 
 
 // CLeftSideOne
@@ -86,6 +88,8 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 		hChild = m_treeCtrl.GetNextItem(hChild, TVGN_NEXT);
 		++index;
 	}
-
+	if (index == 1){
+		isCreate = true;
+	}
 	*pResult = 0;
 }

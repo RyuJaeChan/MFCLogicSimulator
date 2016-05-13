@@ -1,5 +1,6 @@
 #pragma once
 #include "Resource.h"
+static bool isCreate=false;
 class Gate
 {
 private: 
