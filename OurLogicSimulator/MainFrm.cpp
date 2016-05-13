@@ -152,7 +152,8 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	m_pLeftSideOne = (CLeftSideOne*)m_SubSplitter.GetPane(0, 0);
 	m_pLeftSideTwo = (CLeftSideTwo*)m_SubSplitter.GetPane(1, 0);
 
-	m_MainSplitter.SetColumnInfo(0, 300, 10);
+	m_MainSplitter.SetColumnInfo(0, 200, 10);
+	m_SubSplitter.SetRowInfo(0, 350, 10);
 
 	return TRUE;
 }
