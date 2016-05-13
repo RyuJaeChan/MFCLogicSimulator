@@ -24,12 +24,14 @@ IMPLEMENT_DYNCREATE(COurLogicSimulatorView, CView)
 
 BEGIN_MESSAGE_MAP(COurLogicSimulatorView, CView)
 	ON_WM_LBUTTONDOWN()
-	ON_WM_MOUSEMOVE()
+//	ON_WM_MOUSEMOVE()
 	ON_WM_LBUTTONUP()
+	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 // COurLogicSimulatorView 생성/소멸
 bool isDrawline =false;
+bool isCreate = false;
 CPoint from;
 COurLogicSimulatorView::COurLogicSimulatorView()
 {
@@ -57,7 +59,20 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
+	Gate temp;
 	// TODO: 여기에 원시 데이터에 대한 그리기 코드를 추가합니다.
+	for (int i = 0; i < andPoints.GetSize(); i++){
+		temp.PrintGate(andPoints[i],pDC);
+	}
+	CPoint point;
+	::GetCursorPos(&point);
+	CPoint pTemp;
+	if (SearchDot(point, pTemp)){
+		CPen myPen(PS_SOLID, 2, RGB(100, 200, 200));
+		pDC->SelectStockObject(NULL_BRUSH);
+		pDC->SelectObject(&myPen);
+		pDC->Ellipse(pTemp.x - 8, pTemp.y - 8, pTemp.x + 8, pTemp.y + 8);
+	}
 
 }
 
@@ -91,17 +106,17 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	CClientDC dc(this);
 	Gate gt;
-	CPoint temp; ;
+	CPoint temp;
 	if (SearchDot(point, temp)){
-		CPen myPen(PS_SOLID, 2, RGB(100, 200, 200));
-		dc.SelectStockObject(NULL_BRUSH);
-		dc.SelectObject(&myPen);
-		dc.Ellipse(temp.x - 8, temp.y - 8, temp.x + 8, temp.y + 8);
 		isDrawline = true;
 		from = CPoint(temp.x+4,temp.y);
 	}
 	else{
-		gt.PrintGate(point, &dc);
+		if (isCreate == true){
+			andPoints.Add(point);
+			Invalidate();
+			isCreate = false;
+		}
 	}
 
 	////	// TEST
@@ -111,17 +126,12 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 }
 
 
-void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
-{
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	CClientDC dc(this);
-	if (SearchDot(point, CPoint())!=NULL){
-		::SetCursor(AfxGetApp()->LoadStandardCursor(IDC_CROSS));
-	}
-	if (isDrawline){
-	}
-	CView::OnMouseMove(nFlags, point);
-}
+//void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
+//{
+//	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+//	CView::OnMouseMove(nFlags, point);
+//	
+//}
 
 
 void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
@@ -139,4 +149,15 @@ void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
 	}
 	
 	CView::OnLButtonUp(nFlags, point);
+}
+
+
+
+void COurLogicSimulatorView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (nChar == VK_RETURN){
+		isCreate = true;
+	}
+	CView::OnKeyDown(nChar, nRepCnt, nFlags);
 }

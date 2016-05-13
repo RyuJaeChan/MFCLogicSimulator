@@ -6,7 +6,7 @@ private:
 	int width =50;
 	int height =50;
 public :
-	void PrintGate(CPoint point, CClientDC* dc); 
+	void PrintGate(CPoint point, CDC* dc); 
 	
 public:
 	Gate();
@@ -18,5 +18,7 @@ struct GateDotSet{
 	CRect out;
 };
 static CArray<GateDotSet, GateDotSet&> gateArr;
+static CArray<CPoint, CPoint&> andPoints;
+
 BOOL SearchDot(CPoint& point, CPoint& in);
 void Lining(CPoint point);
