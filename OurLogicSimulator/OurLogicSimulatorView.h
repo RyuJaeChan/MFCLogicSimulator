@@ -42,6 +42,7 @@ public:
 //	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // OurLogicSimulatorView.cpp의 디버그 버전

@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "OurLogicSimulator.h"
 #include "LeftSideOne.h"
+#include "OurLogicSimulatorDoc.h"
 #include "Gate.h"
 
 
@@ -78,18 +79,15 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMTREEVIEW pNMTreeView = reinterpret_cast<LPNMTREEVIEW>(pNMHDR);
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	
 
-	int index = 0;
+	
 	HTREEITEM hItem = m_treeCtrl.GetSelectedItem();
-	HTREEITEM hChild = m_treeCtrl.GetChildItem(NULL);
-	while (hChild)
-	{
-		if (hChild == hItem) break;
-		hChild = m_treeCtrl.GetNextItem(hChild, TVGN_NEXT);
-	//	++index;
-	}
-	if (index == 1){
-		isCreate = true;
-	}
+	
+	CString str = m_treeCtrl.GetItemText(hItem);
+	
+	
+	
+	
 	*pResult = 0;
 }

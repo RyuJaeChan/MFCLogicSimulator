@@ -19,13 +19,19 @@ void Gate::PrintGate(CPoint point, CDC* dc){
 	dcmem.CreateCompatibleDC(dc);
 	dcmem.SelectObject(&bitmap);
 	GateDotSet temp;
-	dc->Rectangle(point.x-5, point.y-5, point.x + 5, point.y + 5);
-	dc->Rectangle(point.x - this->width-5, point.y - this->height / 2 + this->height / 3-5, point.x - this->width+5, point.y - this->height / 2 + this->height / 3+5);
-	dc->Rectangle(point.x - this->width - 5, point.y + this->height / 2 - this->height / 3 - 5, point.x - this->width + 5, point.y + this->height / 2 - this->height / 3 + 5);
+	point.x /= 10;
+	point.y /= 10;
+	point.x *= 10;
+	point.y *= 10;
+	CBrush brush(RGB(100, 100, 222));
+	dc->SelectObject(&brush);
+	dc->Ellipse(point.x-2, point.y-2, point.x + 2, point.y + 2);
+	dc->Ellipse(point.x - this->width-2, point.y - this->height / 2 + this->height / 3-2, point.x - this->width+2, point.y - this->height / 2 + this->height / 3+2);
+	dc->Ellipse(point.x - this->width - 2, point.y + this->height / 2 - this->height / 3 - 2, point.x - this->width + 2, point.y + this->height / 2 - this->height / 3 + 2);
 	dc->BitBlt(point.x - this->width, point.y - this->height / 2, point.x, point.y, &dcmem, 0, 0, SRCCOPY);
-	temp.first_in = CRect(point.x - 5, point.y - 5, point.x + 5, point.y + 5);
-	temp.second_in = CRect(point.x - this->width - 5, point.y - this->height / 2 + this->height / 3 - 5, point.x - this->width + 5, point.y - this->height / 2 + this->height / 3 + 5);
-	temp.out = CRect(point.x - this->width - 5, point.y + this->height / 2 - this->height / 3 - 5, point.x - this->width + 5, point.y + this->height / 2 - this->height / 3 + 5);
+	temp.first_in = CRect(point.x - 2, point.y - 2, point.x + 2, point.y + 2);
+	temp.second_in = CRect(point.x - this->width - 2, point.y - this->height / 2 + this->height / 3 - 2, point.x - this->width + 2, point.y - this->height / 2 + this->height / 3 + 2);
+	temp.out = CRect(point.x - this->width - 2, point.y + this->height / 2 - this->height / 3 - 2, point.x - this->width + 2, point.y + this->height / 2 - this->height / 3 + 2);
 	gateArr.Add(temp);
 }
 

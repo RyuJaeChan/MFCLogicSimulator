@@ -11,8 +11,9 @@
 #include "Gate.h"
 #include "OurLogicSimulatorDoc.h"
 #include "OurLogicSimulatorView.h"
-
-
+#include "LeftSideOne.h"
+#include<iostream>
+#include<vector>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -27,15 +28,21 @@ BEGIN_MESSAGE_MAP(COurLogicSimulatorView, CView)
 //	ON_WM_MOUSEMOVE()
 	ON_WM_LBUTTONUP()
 	ON_WM_KEYDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // COurLogicSimulatorView 생성/소멸
 bool isDrawline =false;
-
+bool isClicked = false;
+bool isCreate = false;
 CPoint from;
+CPoint to;
+int board[1000][1000];
+std::vector<std::pair<CPoint, CPoint > >lines;
 COurLogicSimulatorView::COurLogicSimulatorView()
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
+	lines.assign(1,std::pair<CPoint,CPoint>());
 
 }
 
@@ -61,19 +68,52 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 		return;
 	Gate temp;
 	// TODO: 여기에 원시 데이터에 대한 그리기 코드를 추가합니다.
-	for (int i = 0; i < andPoints.GetSize(); i++){
-		temp.PrintGate(andPoints[i],pDC);
+	CDC mDC;
+	CBitmap m_Bitmap;
+	CRect rect;
+	GetClientRect(&rect);
+	mDC.CreateCompatibleDC(pDC);
+	m_Bitmap.CreateCompatibleBitmap(pDC, rect.Width(), rect.Height());
+	mDC.SelectObject(&m_Bitmap);
+	mDC.PatBlt(0, 0, rect.Width(), rect.Height(), WHITENESS);
+
+	if (isDrawline == true && isClicked == true){
+		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
+		mDC.SelectObject(&myPen);
+		mDC.MoveTo(from);
+		mDC.LineTo(to.x, from.y);
+		mDC.MoveTo(to.x, from.y);
+		mDC.LineTo(to);
 	}
+	for (auto it = lines.begin(); it != lines.end(); it++){
+		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
+		mDC.SelectObject(&myPen);
+		mDC.MoveTo(it->first);
+		mDC.LineTo(it->second.x, it->first.y);
+		mDC.MoveTo(it->second.x, it->first.y);
+		mDC.LineTo(it->second);
+	}
+	
+	///////////////
+	for (int i = 0; i < 100; i++){
+		for (int j = 0; j < 100; j++){
+			mDC.SetPixelV(i*10, j*10, RGB(0, 0, 0));
+		}
+	}
+	for (int i = 0; i < andPoints.GetSize(); i++){
+		temp.PrintGate(andPoints[i],&mDC);
+	}
+
 	CPoint point;
 	::GetCursorPos(&point);
 	CPoint pTemp;
 	if (SearchDot(point, pTemp)){
 		CPen myPen(PS_SOLID, 2, RGB(100, 200, 200));
-		pDC->SelectStockObject(NULL_BRUSH);
-		pDC->SelectObject(&myPen);
-		pDC->Ellipse(pTemp.x - 8, pTemp.y - 8, pTemp.x + 8, pTemp.y + 8);
+		mDC.SelectStockObject(NULL_BRUSH);
+		mDC.SelectObject(&myPen);
+		mDC.Ellipse(pTemp.x - 8, pTemp.y - 8, pTemp.x + 8, pTemp.y + 8);
 	}
-
+	pDC->BitBlt(0, 0, rect.Width(), rect.Height(), &mDC, 0, 0, SRCCOPY);
 }
 
 
@@ -110,12 +150,14 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 	if (SearchDot(point, temp)){
 		isDrawline = true;
 		from = CPoint(temp.x+4,temp.y);
+		isClicked = true;
 	}
 	else{
 		if (isCreate == true){
 			andPoints.Add(point);
-			Invalidate();
 			isCreate = false;
+			
+			Invalidate();
 		}
 	}
 
@@ -126,17 +168,18 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	CClientDC dc(this);
+	point.x /= 10;
+	point.y /= 10;
+	point.x *= 10;
+	point.y *= 10;
+	to = point;
+	
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	if (isDrawline){
-		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
-		dc.SelectObject(&myPen);
-		dc.MoveTo(from);
-		dc.LineTo(point.x, from.y);
-		dc.MoveTo(point.x, from.y);
-		dc.LineTo(point);
+		lines.push_back(std::pair<CPoint, CPoint>(from, to));
 		isDrawline = false;
 	}
-	
+	Invalidate();
 	CView::OnLButtonUp(nFlags, point);
 }
 
@@ -144,9 +187,28 @@ void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void COurLogicSimulatorView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
+
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	if (nChar == VK_RETURN){
 		isCreate = true;
 	}
 	CView::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+
+void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	
+	point.x /= 10;
+	point.y /= 10;
+	point.x *= 10;
+	point.y *= 10;
+
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	to = point;
+	if (isDrawline){
+		Invalidate(false);
+	}
+	
+	CView::OnMouseMove(nFlags, point);
 }

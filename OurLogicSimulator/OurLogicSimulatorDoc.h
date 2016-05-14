@@ -17,7 +17,7 @@ public:
 
 // 작업입니다.
 public:
-
+	
 // 재정의입니다.
 public:
 	virtual BOOL OnNewDocument();
