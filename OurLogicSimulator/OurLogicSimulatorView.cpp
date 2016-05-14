@@ -77,8 +77,12 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 	mDC.SelectObject(&m_Bitmap);
 	mDC.PatBlt(0, 0, rect.Width(), rect.Height(), WHITENESS);
 
+	for (int i = 0; i < andPoints.GetSize(); i++){
+		temp.PrintGate(andPoints[i], &mDC);
+	}
+
 	if (isDrawline == true && isClicked == true){
-		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
+		CPen myPen(PS_SOLID, 2, RGB(200, 200, 200));
 		mDC.SelectObject(&myPen);
 		mDC.MoveTo(from);
 		mDC.LineTo(to.x, from.y);
@@ -95,13 +99,10 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 	}
 	
 	///////////////
-	for (int i = 0; i < 100; i++){
-		for (int j = 0; j < 100; j++){
+	for (int i = 0; i < 200; i++){
+		for (int j = 0; j < 200; j++){
 			mDC.SetPixelV(i*10, j*10, RGB(0, 0, 0));
 		}
-	}
-	for (int i = 0; i < andPoints.GetSize(); i++){
-		temp.PrintGate(andPoints[i],&mDC);
 	}
 
 	CPoint point;
@@ -155,12 +156,10 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 	else{
 		if (isCreate == true){
 			andPoints.Add(point);
-			isCreate = false;
-			
+			isCreate = false;		
 			Invalidate();
 		}
 	}
-
 	CView::OnLButtonDown(nFlags, point);
 }
 
@@ -178,8 +177,9 @@ void COurLogicSimulatorView::OnLButtonUp(UINT nFlags, CPoint point)
 	if (isDrawline){
 		lines.push_back(std::pair<CPoint, CPoint>(from, to));
 		isDrawline = false;
+		Invalidate();
 	}
-	Invalidate();
+	
 	CView::OnLButtonUp(nFlags, point);
 }
 
