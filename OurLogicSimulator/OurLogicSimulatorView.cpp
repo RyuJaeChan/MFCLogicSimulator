@@ -34,7 +34,7 @@ END_MESSAGE_MAP()
 // COurLogicSimulatorView 생성/소멸
 bool isDrawline =false;
 bool isClicked = false;
-bool isCreate = false;
+//bool isCreate = false;
 CPoint from;
 CPoint to;
 int board[1000][1000];
@@ -43,7 +43,7 @@ COurLogicSimulatorView::COurLogicSimulatorView()
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 	lines.assign(1,std::pair<CPoint,CPoint>());
-
+	isCreate = false;
 }
 
 COurLogicSimulatorView::~COurLogicSimulatorView()

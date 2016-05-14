@@ -4,7 +4,9 @@
 #include "stdafx.h"
 #include "OurLogicSimulator.h"
 #include "LeftSideOne.h"
-#include "Gate.h"
+#include "OurLogicSimulatorDoc.h"
+#include "Gate.h"							////
+#include "MainFrm.h"
 
 
 
@@ -85,8 +87,8 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 	
 	CString str = m_treeCtrl.GetItemText(hItem);
 	
-	
-	
+	CMainFrame *pFrame = (CMainFrame *)AfxGetMainWnd();
+	pFrame->m_pMainView->isCreate = m_treeCtrl.GetItemData(pNMTreeView->itemNew.hItem);
 	
 	*pResult = 0;
 }
