@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AND기호.bmp" />
+    <Image Include="res\OR기호.bmp" />
     <Image Include="res\OurLogicSimulator.ico" />
     <Image Include="res\OurLogicSimulatorDoc.ico" />
   </ItemGroup>

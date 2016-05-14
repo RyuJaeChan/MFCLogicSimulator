@@ -19,6 +19,8 @@
 #define ID_VIEW_APPLOOK_OFF_2007_AQUA   218
 #define ID_VIEW_APPLOOK_WINDOWS_7       219
 #define IDB_ANDGATE                     311
+#define IDB_BITMAP1                     312
+#define IDB_ORGATE                      312
 #define IDD_LEFTSIDEONE                 313
 #define IDD_LEFTSIDETWO                 314
 #define IDC_BUTTON1                     1000
@@ -30,7 +32,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        312
+#define _APS_NEXT_RESOURCE_VALUE        313
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1004
 #define _APS_NEXT_SYMED_VALUE           315

@@ -92,6 +92,6 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 	
 	CMainFrame *pFrame = (CMainFrame *)AfxGetMainWnd();
 	pFrame->m_pMainView->isCreate = m_treeCtrl.GetItemData(pNMTreeView->itemNew.hItem);
-	
+	pFrame->m_pMainView->gateNum = m_treeCtrl.GetItemData(pNMTreeView->itemNew.hItem);
 	*pResult = 0;
 }
