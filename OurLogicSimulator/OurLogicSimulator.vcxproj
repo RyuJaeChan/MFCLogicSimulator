@@ -131,6 +131,14 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AND기호.bmp" />
+    <Image Include="res\icon3.ico" />
+    <Image Include="res\icon4.ico" />
+    <Image Include="res\icon5.ico" />
+    <Image Include="res\icon6.ico" />
+    <Image Include="res\icon7.ico" />
+    <Image Include="res\icon8.ico" />
+    <Image Include="res\icon9.ico" />
+    <Image Include="res\OR기호.bmp" />
     <Image Include="res\OurLogicSimulator.ico" />
     <Image Include="res\OurLogicSimulatorDoc.ico" />
   </ItemGroup>
