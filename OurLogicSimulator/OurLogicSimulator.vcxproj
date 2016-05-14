@@ -131,13 +131,18 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AND기호.bmp" />
-    <Image Include="res\icon3.ico" />
-    <Image Include="res\icon4.ico" />
-    <Image Include="res\icon5.ico" />
-    <Image Include="res\icon6.ico" />
-    <Image Include="res\icon7.ico" />
-    <Image Include="res\icon8.ico" />
-    <Image Include="res\icon9.ico" />
+    <Image Include="res\icon\icon_AND.ico" />
+    <Image Include="res\icon\icon_directory.ico" />
+    <Image Include="res\icon\icon_D_FF.ico" />
+    <Image Include="res\icon\icon_JK_FF.ico" />
+    <Image Include="res\icon\icon_Lib.ico" />
+    <Image Include="res\icon\icon_Lib_Ckecked.ico" />
+    <Image Include="res\icon\icon_NAND.ico" />
+    <Image Include="res\icon\icon_NOR.ico" />
+    <Image Include="res\icon\icon_NOT.ico" />
+    <Image Include="res\icon\icon_OR.ico" />
+    <Image Include="res\icon\icon_T_FF.ico" />
+    <Image Include="res\icon\icon_XOR.ico" />
     <Image Include="res\OR기호.bmp" />
     <Image Include="res\OurLogicSimulator.ico" />
     <Image Include="res\OurLogicSimulatorDoc.ico" />

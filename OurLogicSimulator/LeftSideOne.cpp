@@ -60,21 +60,29 @@ void CLeftSideOne::OnInitialUpdate()
 	CFormView::OnInitialUpdate();
 
 	m_imageList.Create(16, 16, ILC_COLOR8, 10, 10);
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON3));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON4));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON5));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON6));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON7));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON8));
-	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON9));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_DIR));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_AND));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_OR));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_NOT));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_NAND));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_NOR));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_XOR));
+
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_D_FF));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_T_FF));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_JK_FF));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_LIB));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_LIB_CHECKED));
+
+
 
 	m_treeCtrl.SetImageList(&m_imageList, TVSIL_NORMAL);
 
-	HTREEITEM  hRoot;
-	hRoot = m_treeCtrl.InsertItem(L"ROOT", 0, 0, TVI_ROOT, TVI_LAST);
-	HTREEITEM  hGate, hChild;
-	hGate = m_treeCtrl.InsertItem(L"Gates", 0, 0, hRoot, TVI_LAST);
+	HTREEITEM  hRoot, hGate, hMemory, hChild;
 
+	hRoot = m_treeCtrl.InsertItem(L"ROOT", 0, 0, TVI_ROOT, TVI_LAST);
+
+	hGate = m_treeCtrl.InsertItem(L"Gates", 0, 0, hRoot, TVI_LAST);
 	hChild = m_treeCtrl.InsertItem(L"AND", 1, 1, hGate, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 1);
 	hChild = m_treeCtrl.InsertItem(L"OR", 2, 2, hGate, TVI_LAST);
@@ -89,9 +97,18 @@ void CLeftSideOne::OnInitialUpdate()
 	m_treeCtrl.SetItemData(hChild, 6);
 
 
+	hMemory = m_treeCtrl.InsertItem(L"Memory", 0, 0, hRoot, TVI_LAST);
+	hChild = m_treeCtrl.InsertItem(L"D Flip-Flop", 7, 7, hMemory, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 7);
+	hChild = m_treeCtrl.InsertItem(L"T Flip-Flop", 8, 8, hMemory, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 8);
+	hChild = m_treeCtrl.InsertItem(L"JK Flip-Flop", 9, 9, hMemory, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 9);
 
-	m_treeCtrl.Expand(hRoot, TVE_EXPAND);	//ÆîÄ¡±â
+	m_treeCtrl.Expand(hRoot, TVE_EXPAND);
 	m_treeCtrl.Expand(hGate, TVE_EXPAND);
+	m_treeCtrl.Expand(hMemory, TVE_EXPAND);		//ÆîÄ¡±â
+
 	ResizeParentToFit(TRUE);
 
 

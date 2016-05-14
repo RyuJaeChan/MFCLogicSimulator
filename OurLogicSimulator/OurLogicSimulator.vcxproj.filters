@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="리소스 파일\ICON">
+      <UniqueIdentifier>{4deb38b9-27ee-4b7a-8d10-5b485afe6453}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -95,29 +98,44 @@
     <Image Include="res\AND기호.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="res\icon3.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon4.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon5.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon6.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon7.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon8.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\icon9.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="res\OR기호.bmp">
       <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon\icon_AND.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_D_FF.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_directory.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_JK_FF.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_Lib.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_Lib_Ckecked.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_NAND.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_NOR.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_NOT.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_OR.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_T_FF.ico">
+      <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\icon\icon_XOR.ico">
+      <Filter>리소스 파일\ICON</Filter>
     </Image>
   </ItemGroup>
 </Project>
