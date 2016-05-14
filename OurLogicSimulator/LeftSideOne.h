@@ -28,6 +28,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CTreeCtrl m_treeCtrl;
+	CImageList m_imageList;
 	virtual void OnInitialUpdate();
 	afx_msg void OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult);
 };

@@ -19,8 +19,17 @@
 #define ID_VIEW_APPLOOK_OFF_2007_AQUA   218
 #define ID_VIEW_APPLOOK_WINDOWS_7       219
 #define IDB_ANDGATE                     311
+#define IDI_ICON1                       312
 #define IDD_LEFTSIDEONE                 313
+#define IDI_ICON2                       313
 #define IDD_LEFTSIDETWO                 314
+#define IDI_ICON3                       314
+#define IDI_ICON4                       315
+#define IDI_ICON5                       316
+#define IDI_ICON6                       317
+#define IDI_ICON7                       318
+#define IDI_ICON8                       319
+#define IDI_ICON9                       320
 #define IDC_BUTTON1                     1000
 #define IDC_TREE1                       1001
 #define IDC_CHECK1                      1002
@@ -30,7 +39,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        312
+#define _APS_NEXT_RESOURCE_VALUE        321
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1004
 #define _APS_NEXT_SYMED_VALUE           315

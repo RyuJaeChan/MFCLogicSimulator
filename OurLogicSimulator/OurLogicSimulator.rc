@@ -70,6 +70,13 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\OurLogicSimulator.ico"
 IDR_OurLogicSimulatTYPE ICON                    "res\\OurLogicSimulatorDoc.ico"
+IDI_ICON3               ICON                    "res\\icon3.ico"
+IDI_ICON4               ICON                    "res\\icon4.ico"
+IDI_ICON5               ICON                    "res\\icon5.ico"
+IDI_ICON6               ICON                    "res\\icon6.ico"
+IDI_ICON7               ICON                    "res\\icon7.ico"
+IDI_ICON8               ICON                    "res\\icon8.ico"
+IDI_ICON9               ICON                    "res\\icon9.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //

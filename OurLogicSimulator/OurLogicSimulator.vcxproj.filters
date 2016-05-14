@@ -95,5 +95,32 @@
     <Image Include="res\AND기호.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\Directory.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\AndGate.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon4.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon3.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon5.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon6.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon7.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon8.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon9.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

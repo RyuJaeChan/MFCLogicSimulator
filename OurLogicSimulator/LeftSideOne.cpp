@@ -59,15 +59,35 @@ void CLeftSideOne::OnInitialUpdate()
 {
 	CFormView::OnInitialUpdate();
 
-	HTREEITEM  hRoot;
-	hRoot = m_treeCtrl.InsertItem(L"root", 0, 1, TVI_ROOT, TVI_LAST);
-	HTREEITEM  hGate, hChild;
-	hGate = m_treeCtrl.InsertItem(L"Gates", 1, 1, hRoot, TVI_LAST);
+	m_imageList.Create(16, 16, ILC_COLOR8, 10, 10);
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON3));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON4));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON5));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON6));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON7));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON8));
+	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON9));
 
-	hChild = m_treeCtrl.InsertItem(L"AND", 2, 1, hGate, TVI_LAST);
+	m_treeCtrl.SetImageList(&m_imageList, TVSIL_NORMAL);
+
+	HTREEITEM  hRoot;
+	hRoot = m_treeCtrl.InsertItem(L"ROOT", 0, 0, TVI_ROOT, TVI_LAST);
+	HTREEITEM  hGate, hChild;
+	hGate = m_treeCtrl.InsertItem(L"Gates", 0, 0, hRoot, TVI_LAST);
+
+	hChild = m_treeCtrl.InsertItem(L"AND", 1, 1, hGate, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 1);
-	hChild = m_treeCtrl.InsertItem(L"OR", 1, 1, hGate, TVI_LAST);
+	hChild = m_treeCtrl.InsertItem(L"OR", 2, 2, hGate, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 2);
+	hChild = m_treeCtrl.InsertItem(L"NOT", 3, 3, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 3);
+	hChild = m_treeCtrl.InsertItem(L"NAND", 4, 4, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 4);
+	hChild = m_treeCtrl.InsertItem(L"NOR", 5, 5, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 5);
+	hChild = m_treeCtrl.InsertItem(L"XOR", 6, 6, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 6);
+
 
 
 	m_treeCtrl.Expand(hRoot, TVE_EXPAND);	//펼치기
@@ -85,7 +105,6 @@ void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	
 
-	
 	HTREEITEM hItem = m_treeCtrl.GetSelectedItem();
 	
 	CString str = m_treeCtrl.GetItemText(hItem);
