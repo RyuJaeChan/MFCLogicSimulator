@@ -203,7 +203,7 @@ void COurLogicSimulatorView::OnMouseMove(UINT nFlags, CPoint point)
 	point.y /= 10;
 	point.x *= 10;
 	point.y *= 10;
-
+	
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	to = point;
 	if (isDrawline){
