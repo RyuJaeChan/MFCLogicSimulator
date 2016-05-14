@@ -61,10 +61,13 @@ void CLeftSideOne::OnInitialUpdate()
 
 	HTREEITEM  hRoot;
 	hRoot = m_treeCtrl.InsertItem(L"root", 0, 1, TVI_ROOT, TVI_LAST);
-	HTREEITEM  hGate;
+	HTREEITEM  hGate, hChild;
 	hGate = m_treeCtrl.InsertItem(L"Gates", 1, 1, hRoot, TVI_LAST);
-	m_treeCtrl.InsertItem(L"AND", 1, 1, hGate, TVI_LAST);
-	m_treeCtrl.InsertItem(L"OR", 1, 1, hGate, TVI_LAST);
+
+	hChild = m_treeCtrl.InsertItem(L"AND", 2, 1, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 1);
+	hChild = m_treeCtrl.InsertItem(L"OR", 1, 1, hGate, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 2);
 
 
 	m_treeCtrl.Expand(hRoot, TVE_EXPAND);	//ÆîÄ¡±â
