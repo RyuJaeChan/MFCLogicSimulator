@@ -48,9 +48,6 @@
     <ClInclude Include="Gate.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SelectView.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="LeftSideOne.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -75,9 +72,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Gate.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="LeftSideOne.cpp">

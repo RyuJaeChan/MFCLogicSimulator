@@ -71,7 +71,7 @@ int CLeftSideOne::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	m_treeCtrl.SetImageList(&m_imageList, TVSIL_NORMAL);
 
-	HTREEITEM  hRoot, hGate, hMemory, hChild;
+	HTREEITEM  hRoot, hGate, hMemory, hSwitch, hChild;
 
 	hRoot = m_treeCtrl.InsertItem(L"ROOT", 0, 0, TVI_ROOT, TVI_LAST);
 
@@ -98,10 +98,19 @@ int CLeftSideOne::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	hChild = m_treeCtrl.InsertItem(L"JK Flip-Flop", 9, 9, hMemory, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 9);
 
+	hSwitch = m_treeCtrl.InsertItem(L"Switch", 0, 0, hRoot, TVI_LAST);
+	hChild = m_treeCtrl.InsertItem(L"T Flip-Flop", 10, 10, hSwitch, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 8);
+	hChild = m_treeCtrl.InsertItem(L"JK Flip-Flop", 11, 11, hSwitch, TVI_LAST);
+	m_treeCtrl.SetItemData(hChild, 9);
+
+
+
+
 	m_treeCtrl.Expand(hRoot, TVE_EXPAND);
 	m_treeCtrl.Expand(hGate, TVE_EXPAND);
 	m_treeCtrl.Expand(hMemory, TVE_EXPAND);		//ÆîÄ¡±â
-
+	m_treeCtrl.Expand(hSwitch, TVE_EXPAND);
 
 	return 0;
 }
