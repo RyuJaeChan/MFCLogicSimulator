@@ -99,9 +99,9 @@ int CLeftSideOne::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_treeCtrl.SetItemData(hChild, 9);
 
 	hSwitch = m_treeCtrl.InsertItem(L"Switch", 0, 0, hRoot, TVI_LAST);
-	hChild = m_treeCtrl.InsertItem(L"T Flip-Flop", 10, 10, hSwitch, TVI_LAST);
+	hChild = m_treeCtrl.InsertItem(L"LED", 10, 10, hSwitch, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 10);
-	hChild = m_treeCtrl.InsertItem(L"JK Flip-Flop", 11, 11, hSwitch, TVI_LAST);
+	hChild = m_treeCtrl.InsertItem(L"Switch", 11, 11, hSwitch, TVI_LAST);
 	m_treeCtrl.SetItemData(hChild, 11);
 
 
