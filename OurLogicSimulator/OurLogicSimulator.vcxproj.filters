@@ -42,13 +42,16 @@
     <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LeftSideOne.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="LeftSideTwo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Gate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftSideOne.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,13 +71,16 @@
     <ClCompile Include="OurLogicSimulatorView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LeftSideOne.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="LeftSideTwo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Gate.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftSideOne.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

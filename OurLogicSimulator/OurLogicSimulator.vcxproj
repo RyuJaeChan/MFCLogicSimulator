@@ -107,6 +107,7 @@
     <ClInclude Include="OurLogicSimulatorDoc.h" />
     <ClInclude Include="OurLogicSimulatorView.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SelectView.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClCompile Include="OurLogicSimulator.cpp" />
     <ClCompile Include="OurLogicSimulatorDoc.cpp" />
     <ClCompile Include="OurLogicSimulatorView.cpp" />
+    <ClCompile Include="SelectView.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

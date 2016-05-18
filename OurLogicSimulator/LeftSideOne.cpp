@@ -8,14 +8,11 @@
 #include "Gate.h"							////
 #include "MainFrm.h"
 
-
-
 // CLeftSideOne
 
-IMPLEMENT_DYNCREATE(CLeftSideOne, CFormView)
+IMPLEMENT_DYNCREATE(CLeftSideOne, CTreeView)
 
 CLeftSideOne::CLeftSideOne()
-	: CFormView(CLeftSideOne::IDD)
 {
 
 }
@@ -24,14 +21,9 @@ CLeftSideOne::~CLeftSideOne()
 {
 }
 
-void CLeftSideOne::DoDataExchange(CDataExchange* pDX)
-{
-	CFormView::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_TREE1, m_treeCtrl);
-}
-
-BEGIN_MESSAGE_MAP(CLeftSideOne, CFormView)
-	ON_NOTIFY(TVN_SELCHANGED, IDC_TREE1, &CLeftSideOne::OnTvnSelchangedTree1)
+BEGIN_MESSAGE_MAP(CLeftSideOne, CTreeView)
+	ON_WM_CREATE()
+	ON_NOTIFY_REFLECT(TVN_SELCHANGING, &CLeftSideOne::OnTvnSelchanging)
 END_MESSAGE_MAP()
 
 
@@ -40,13 +32,13 @@ END_MESSAGE_MAP()
 #ifdef _DEBUG
 void CLeftSideOne::AssertValid() const
 {
-	CFormView::AssertValid();
+	CTreeView::AssertValid();
 }
 
 #ifndef _WIN32_WCE
 void CLeftSideOne::Dump(CDumpContext& dc) const
 {
-	CFormView::Dump(dc);
+	CTreeView::Dump(dc);
 }
 #endif
 #endif //_DEBUG
@@ -55,9 +47,13 @@ void CLeftSideOne::Dump(CDumpContext& dc) const
 // CLeftSideOne 메시지 처리기입니다.
 
 
-void CLeftSideOne::OnInitialUpdate()
+int CLeftSideOne::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	CFormView::OnInitialUpdate();
+	if (CTreeView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  여기에 특수화된 작성 코드를 추가합니다.
+	CTreeCtrl& m_treeCtrl = GetTreeCtrl();
 
 	m_imageList.Create(16, 16, ILC_COLOR8, 10, 10);
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_DIR));
@@ -67,14 +63,11 @@ void CLeftSideOne::OnInitialUpdate()
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_NAND));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_NOR));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_XOR));
-
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_D_FF));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_T_FF));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_JK_FF));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_LIB));
 	m_imageList.Add(AfxGetApp()->LoadIcon(IDI_ICON_LIB_CHECKED));
-
-
 
 	m_treeCtrl.SetImageList(&m_imageList, TVSIL_NORMAL);
 
@@ -109,25 +102,39 @@ void CLeftSideOne::OnInitialUpdate()
 	m_treeCtrl.Expand(hGate, TVE_EXPAND);
 	m_treeCtrl.Expand(hMemory, TVE_EXPAND);		//펼치기
 
-	ResizeParentToFit(TRUE);
 
-
-	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	return 0;
 }
 
 
-void CLeftSideOne::OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult)
+void CLeftSideOne::OnTvnSelchanging(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMTREEVIEW pNMTreeView = reinterpret_cast<LPNMTREEVIEW>(pNMHDR);
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	
-
+	CTreeCtrl& m_treeCtrl = GetTreeCtrl();
 	HTREEITEM hItem = m_treeCtrl.GetSelectedItem();
-	
+
 	CString str = m_treeCtrl.GetItemText(hItem);
-	
+
 	CMainFrame *pFrame = (CMainFrame *)AfxGetMainWnd();
 	pFrame->m_pMainView->isCreate = m_treeCtrl.GetItemData(pNMTreeView->itemNew.hItem);
 	pFrame->m_pMainView->gateNum = m_treeCtrl.GetItemData(pNMTreeView->itemNew.hItem);
+
+
+
+
+
+
+
+
+
 	*pResult = 0;
+}
+
+
+BOOL CLeftSideOne::PreCreateWindow(CREATESTRUCT& cs)
+{
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	cs.style |= TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | TVS_SHOWSELALWAYS | TVS_DISABLEDRAGDROP;
+	return CTreeView::PreCreateWindow(cs);
 }

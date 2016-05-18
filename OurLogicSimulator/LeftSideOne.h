@@ -1,11 +1,9 @@
 #pragma once
-#include "afxcmn.h"
 
 
+// CLeftSideOne ∫‰¿‘¥œ¥Ÿ.
 
-// CLeftSideOne ∆˚ ∫‰¿‘¥œ¥Ÿ.
-
-class CLeftSideOne : public CFormView
+class CLeftSideOne : public CTreeView
 {
 	DECLARE_DYNCREATE(CLeftSideOne)
 
@@ -14,7 +12,6 @@ protected:
 	virtual ~CLeftSideOne();
 
 public:
-	enum { IDD = IDD_LEFTSIDEONE };
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 #ifndef _WIN32_WCE
@@ -23,14 +20,12 @@ public:
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ¡ˆø¯¿‘¥œ¥Ÿ.
-
 	DECLARE_MESSAGE_MAP()
 public:
-	CTreeCtrl m_treeCtrl;
 	CImageList m_imageList;
-	virtual void OnInitialUpdate();
-	afx_msg void OnTvnSelchangedTree1(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnTvnSelchanging(NMHDR *pNMHDR, LRESULT *pResult);
+	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 };
 
 
