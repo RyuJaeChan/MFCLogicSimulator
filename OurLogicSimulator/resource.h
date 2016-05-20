@@ -42,6 +42,7 @@
 #define IDI_ICON_LIB                    322
 #define IDI_ICON_LIB_CHECKED            323
 #define IDI_ICON_T_FF                   324
+#define IDB_NOTGATE                     325
 #define IDC_BUTTON1                     1000
 #define IDC_TREE1                       1001
 #define IDC_CHECK1                      1002
@@ -51,7 +52,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        325
+#define _APS_NEXT_RESOURCE_VALUE        326
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1004
 #define _APS_NEXT_SYMED_VALUE           315

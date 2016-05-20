@@ -259,6 +259,7 @@ END
 
 IDB_ANDGATE             BITMAP                  "res\\AND기호.bmp"
 IDB_ORGATE              BITMAP                  "res\\OR기호.bmp"
+IDB_NOTGATE             BITMAP                  "res\\NOT기호.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

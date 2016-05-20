@@ -79,7 +79,7 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 	mDC.PatBlt(0, 0, rect.Width(), rect.Height(), WHITENESS);
 
 
-
+	// print pre line
 	if (isDrawline == true && isClicked == true){
 		CPen myPen(PS_SOLID, 2, RGB(200, 200, 200));
 		mDC.SelectObject(&myPen);
@@ -88,7 +88,24 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 		mDC.MoveTo(to.x, from.y);
 		mDC.LineTo(to);
 	}
-	
+	// print board
+	for (int i = 0; i < 200; i++){
+		for (int j = 0; j < 200; j++){
+			mDC.SetPixelV(i * 10, j * 10, RGB(0, 0, 0));
+		}
+	}
+	// print gate
+	//mDC.SelectStockObject(NULL_PEN);
+	for (int i = 0; i < andPoints.GetSize(); i++){
+		temp.PrintGate(andPoints[i], &mDC, 1);
+	}
+	for (int i = 0; i < orPoints.GetSize(); i++){
+		temp.PrintGate(orPoints[i], &mDC, 2);
+	}
+	for (int i = 0; i < notPoints.GetSize(); i++){
+		temp.PrintGate(notPoints[i], &mDC, 3);
+	}
+	//print line
 	for (auto it = lines.begin(); it != lines.end(); it++){
 		CPen myPen(PS_SOLID, 2, RGB(200, 100, 100));
 		mDC.SelectObject(&myPen);
@@ -97,20 +114,8 @@ void COurLogicSimulatorView::OnDraw(CDC* pDC)
 		mDC.MoveTo(it->second.x, it->first.y);
 		mDC.LineTo(it->second);
 	}
-	mDC.SelectStockObject(NULL_PEN);
-	///////////////
-	for (int i = 0; i < 200; i++){
-		for (int j = 0; j < 200; j++){
-			mDC.SetPixelV(i*10, j*10, RGB(0, 0, 0));
-		}
-	}
-	//////////// print gate
-	for (int i = 0; i < andPoints.GetSize(); i++){
-		temp.PrintGate(andPoints[i], &mDC,1);
-	}
-	for (int i = 0; i < orPoints.GetSize(); i++){
-		temp.PrintGate(orPoints[i], &mDC, 2);
-	}
+	
+
 	////////////////////////////
 	CPoint point;
 	::GetCursorPos(&point);
@@ -167,6 +172,8 @@ void COurLogicSimulatorView::OnLButtonDown(UINT nFlags, CPoint point)
 			case 1: andPoints.Add(point);
 				break;
 			case 2: orPoints.Add(point);
+				break;
+			case 3: notPoints.Add(point);
 				break;
 			default:
 				break;

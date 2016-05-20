@@ -143,6 +143,7 @@
     <Image Include="res\icon\icon_OR.ico" />
     <Image Include="res\icon\icon_T_FF.ico" />
     <Image Include="res\icon\icon_XOR.ico" />
+    <Image Include="res\NOT기호.bmp" />
     <Image Include="res\OR기호.bmp" />
     <Image Include="res\OurLogicSimulator.ico" />
     <Image Include="res\OurLogicSimulatorDoc.ico" />

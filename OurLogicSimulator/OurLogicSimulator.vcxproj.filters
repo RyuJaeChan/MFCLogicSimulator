@@ -45,10 +45,10 @@
     <ClInclude Include="LeftSideTwo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Gate.h">
+    <ClInclude Include="LeftSideOne.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LeftSideOne.h">
+    <ClInclude Include="Gate.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -136,6 +136,9 @@
     </Image>
     <Image Include="res\icon\icon_XOR.ico">
       <Filter>리소스 파일\ICON</Filter>
+    </Image>
+    <Image Include="res\NOT기호.bmp">
+      <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
 </Project>
